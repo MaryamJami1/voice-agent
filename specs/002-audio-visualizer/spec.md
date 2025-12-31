@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "read the phase.md file and create phase 3"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
@@ -74,7 +74,7 @@ As a user of the Live AI Dashboard, I want the audio visualizer to be synchroniz
 - What visual behavior occurs when the component is not visible (tab is not active) and then becomes visible again?
 - How does the visualizer handle extreme performance conditions where animations might stutter?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -91,12 +91,12 @@ As a user of the Live AI Dashboard, I want the audio visualizer to be synchroniz
 - **FR-006**: System MUST ensure the visualizer is responsive and works across different screen sizes
 - **FR-007**: System MUST provide smooth animations with 60fps performance under normal conditions
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **AudioVisualizer Component**: The main UI element that renders the animated visualization based on agent states
 - **AgentState**: The current state of the agent (idle, listening, processing, speaking) that drives the visualizer behavior
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

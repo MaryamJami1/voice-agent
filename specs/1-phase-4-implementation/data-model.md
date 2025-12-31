@@ -6,6 +6,7 @@
 ## Entity: TranscriptMessage
 
 ### Attributes
+
 - `id`: string
   - Unique identifier for the message
   - Required: Yes
@@ -32,10 +33,12 @@
   - Default: 'delivered'
 
 ### Relationships
+
 - Part of a TranscriptList collection
 - Associated with an agent state from useAgentSimulator hook
 
 ### Validation Rules
+
 - `content` must not be empty or whitespace only
 - `speaker` must be either 'agent' or 'user'
 - `timestamp` must be a valid date
@@ -44,6 +47,7 @@
 ## Entity: TranscriptList
 
 ### Attributes
+
 - `messages`: TranscriptMessage[]
   - Ordered collection of messages
   - Required: Yes
@@ -61,10 +65,12 @@
   - Default: true
 
 ### Relationships
+
 - Contains multiple TranscriptMessage entities
 - Associated with a useAgentSimulator hook instance
 
 ### Validation Rules
+
 - `messages` array items must conform to TranscriptMessage schema
 - `messages` must be ordered chronologically (oldest first)
 - `lastUpdated` must be a valid date
@@ -72,6 +78,7 @@
 ## Component Props Interface: LiveTranscriptProps
 
 ### Attributes
+
 - `messages`: TranscriptMessage[]
   - Array of messages to display
   - Required: Yes
@@ -95,6 +102,7 @@
 ## UI State Model
 
 ### Scroll State
+
 - `isUserScrolledUp`: boolean
   - Indicates if user has scrolled away from the bottom
   - Used to determine if auto-scroll should be active
@@ -104,6 +112,7 @@
   - Calculated based on scroll position and user interaction
 
 ### Display State
+
 - `formattedMessages`: Formatted version of messages with UI-specific properties
   - May include additional properties for display purposes
   - Processed from raw TranscriptMessage objects
@@ -111,12 +120,15 @@
 ## Integration Model
 
 ### Hook Integration
+
 The component will integrate with useAgentSimulator hook which provides:
+
 - Current agent state ('idle', 'listening', 'processing', 'speaking')
 - Transcript messages array
 - State change callbacks
 
 ### Data Flow
+
 1. useAgentSimulator hook provides messages
 2. LiveTranscript component receives messages as props
 3. Component renders messages with appropriate styling based on speaker

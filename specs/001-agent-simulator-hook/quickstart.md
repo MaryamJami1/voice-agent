@@ -14,7 +14,7 @@ No additional installation is required - the hook uses only React 19 and TypeScr
 ### Import the Hook
 
 ```typescript
-import { useAgentSimulator } from '@/hooks/useAgentSimulator';
+import { useAgentSimulator } from '@/hooks/useAgentSimulator'
 ```
 
 ### Use in a Component
@@ -47,25 +47,25 @@ function Dashboard() {
 
 ```typescript
 interface UseAgentSimulatorReturn {
-  currentAgentState: AgentState;      // Current agent state
-  transcript: TranscriptMessage[];     // All messages (append-only)
-  isRunning: boolean;                 // Simulation active?
-  interrupt: () => void;              // Force listening state
-  stop: () => void;                   // Stop simulation
-  start: () => void;                 // Start/restart simulation
+  currentAgentState: AgentState // Current agent state
+  transcript: TranscriptMessage[] // All messages (append-only)
+  isRunning: boolean // Simulation active?
+  interrupt: () => void // Force listening state
+  stop: () => void // Stop simulation
+  start: () => void // Start/restart simulation
 }
 ```
 
 ### Properties
 
-| Property | Type | Read/Write | Description |
-|----------|------|------------|-------------|
-| currentAgentState | 'idle' \| 'listening' \| 'processing' \| 'speaking' | Read | Current agent state |
-| transcript | TranscriptMessage[] | Read | Array of all messages |
-| isRunning | boolean | Read | Whether simulation is cycling |
-| interrupt | () => void | Write | Force transition to listening state |
-| stop | () => void | Write | Stop the simulation |
-| start | () => void | Write | Start/restart the simulation |
+| Property          | Type                                                | Read/Write | Description                         |
+| ----------------- | --------------------------------------------------- | ---------- | ----------------------------------- |
+| currentAgentState | 'idle' \| 'listening' \| 'processing' \| 'speaking' | Read       | Current agent state                 |
+| transcript        | TranscriptMessage[]                                 | Read       | Array of all messages               |
+| isRunning         | boolean                                             | Read       | Whether simulation is cycling       |
+| interrupt         | () => void                                          | Write      | Force transition to listening state |
+| stop              | () => void                                          | Write      | Stop the simulation                 |
+| start             | () => void                                          | Write      | Start/restart the simulation        |
 
 ## Behavior
 
@@ -113,6 +113,7 @@ function Dashboard() {
 ```
 
 Output example:
+
 ```
 Agent: Hello, how can I help you? (2025-12-31T10:00:00.000Z)
 User: I need help with my account (2025-12-31T10:00:09.000Z)
@@ -138,6 +139,7 @@ function Dashboard() {
 ```
 
 When clicked:
+
 1. Current timer is cleared
 2. State becomes 'listening' immediately
 3. New timer started for 1 second (listening duration)
@@ -161,6 +163,7 @@ function Dashboard() {
 ```
 
 When clicked:
+
 1. Current timer is cleared
 2. isRunning becomes false
 3. currentAgentState remains unchanged
@@ -185,6 +188,7 @@ function Dashboard() {
 ```
 
 Behavior:
+
 - If stopped: Starts simulation from current state (resumes cycle)
 - If already running: No effect (idempotent)
 - If idle: Starts simulation from idle → speaking
@@ -236,6 +240,7 @@ function Dashboard() {
 ```
 
 Each instance has:
+
 - Its own state (independent cycles)
 - Its own transcript (separate message history)
 - Its own timers (no interference)
@@ -358,6 +363,7 @@ function Dashboard() {
 ## Support
 
 For issues or questions:
+
 1. Check hook implementation at `/hooks/useAgentSimulator.ts`
 2. Review data model at `specs/001-agent-simulator-hook/data-model.md`
 3. Verify TypeScript types match interface definitions

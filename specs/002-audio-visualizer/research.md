@@ -1,13 +1,17 @@
 # Research: Audio Visualizer Component
 
 ## Decision: Visualizer Implementation Approach
+
 **Rationale**: After researching different approaches for audio visualization, canvas-based animations were chosen for their superior performance with real-time updates and complex animations. Canvas provides better control over individual visual elements and performs more efficiently than CSS animations when dealing with multiple animated elements that need to respond to state changes in real-time.
 
 ## Decision: Animation Technique
+
 **Rationale**: Canvas animations will be used rather than CSS animations for the core visualization. CSS will be used for the overall component styling and glassmorphism effects. Canvas provides more flexibility for creating wave patterns, bars, and rings that can respond dynamically to the agent states with different intensity levels.
 
 ## Decision: State-Based Animation Mapping
+
 **Rationale**: Each agent state will have distinct visual characteristics:
+
 - Idle: Minimal, subtle pulsing animation with low intensity
 - Listening: Reactive animations that respond to "input" with medium intensity
 - Processing: Pulsing/loading animation pattern with increasing intensity

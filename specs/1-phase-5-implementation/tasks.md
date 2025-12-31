@@ -1,5 +1,5 @@
 ---
-description: "Task list for Phase 5 - Read Requirements from phase.md file"
+description: 'Task list for Phase 5 - Read Requirements from phase.md file'
 ---
 
 # Tasks: Phase 5 - Read Requirements from phase.md file

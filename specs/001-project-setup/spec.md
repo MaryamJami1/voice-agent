@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "now create phase 1 read from the phase.md file"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Initial Project Environment Setup (Priority: P1)
 
@@ -46,7 +46,7 @@ A developer needs code quality tools configured to ensure consistent code format
 - How does the system handle version conflicts between required packages?
 - What happens when a developer tries to use the project on an unsupported Node.js version?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -69,7 +69,7 @@ A developer needs code quality tools configured to ensure consistent code format
 - The developer has permissions to create files and directories in the project workspace
 - Package manager is already configured and available on the development machine
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

@@ -4,22 +4,22 @@
  */
 
 export interface TranscriptMessage {
-  id: string;
-  content: string;
-  speaker: 'Agent' | 'User';
-  timestamp: Date;
-  status?: 'pending' | 'delivered' | 'read';
+  id: string
+  content: string
+  speaker: 'Agent' | 'User'
+  timestamp: Date
+  status?: 'pending' | 'delivered' | 'read'
 }
 
 export interface TranscriptList {
-  messages: TranscriptMessage[];
-  lastUpdated: Date;
-  autoScrollEnabled?: boolean;
+  messages: TranscriptMessage[]
+  lastUpdated: Date
+  autoScrollEnabled?: boolean
 }
 
 export interface LiveTranscriptProps {
-  messages: TranscriptMessage[];
-  onScroll?: () => void;
-  className?: string;
-  autoScroll?: boolean;
+  messages: TranscriptMessage[]
+  onScroll?: () => void
+  className?: string
+  autoScroll?: boolean
 }

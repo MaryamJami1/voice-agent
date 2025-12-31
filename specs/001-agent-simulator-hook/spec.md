@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "read phase.md file and start phase 2"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Automatic Agent State Simulation (Priority: P1)
 
@@ -83,7 +83,7 @@ The system provides mechanisms to stop the simulation and reset the state to an 
 - How does the system behave when the browser's main thread is blocked during a state transition?
 - What occurs if the state duration configuration is changed while the simulation is running?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -106,7 +106,7 @@ The system provides mechanisms to stop the simulation and reset the state to an 
 - **Transcript Message**: Represents a single line of conversation with speaker label, timestamp, and content
 - **Simulation State**: Represents whether the simulation is actively running or stopped
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -117,7 +117,7 @@ The system provides mechanisms to stop the simulation and reset the state to an 
 - **SC-005**: Stop command halts all state transitions within 50ms
 - **SC-006**: Multiple instances of the hook can run concurrently without state interference
 
-## Out of Scope *(mandatory)*
+## Out of Scope _(mandatory)_
 
 - Audio input/output processing (this is a simulation only, no real audio)
 - Voice recognition or speech synthesis

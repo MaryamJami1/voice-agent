@@ -8,13 +8,6 @@
     "sourceMap": true,
     "composite": true
   },
-  "include": [
-    "lib/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "tests",
-    "examples"
-  ]
+  "include": ["lib/**/*"],
+  "exclude": ["node_modules", "dist", "tests", "examples"]
 }

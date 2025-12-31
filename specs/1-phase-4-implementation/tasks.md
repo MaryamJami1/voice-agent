@@ -1,5 +1,5 @@
 ---
-description: "Task list for Live Transcript Component implementation"
+description: 'Task list for Live Transcript Component implementation'
 ---
 
 # Tasks: Live Transcript Component

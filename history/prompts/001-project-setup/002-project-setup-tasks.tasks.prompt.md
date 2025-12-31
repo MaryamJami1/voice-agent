@@ -9,7 +9,7 @@ feature: 001-project-setup
 branch: 001-project-setup
 user: User
 command: /sp.tasks
-labels: ["tasks", "phase-1", "project-setup", "infrastructure"]
+labels: ['tasks', 'phase-1', 'project-setup', 'infrastructure']
 links:
   spec: specs/001-project-setup/spec.md
   ticket: null
@@ -32,10 +32,12 @@ tests:
 Generated comprehensive task list for Project Setup & Infrastructure (29 tasks total)
 
 **Supporting Documents Created:**
+
 - plan.md: Technical context, project structure, constitution check
 - quickstart.md: Setup and verification instructions
 
 **Task Breakdown by Phase:**
+
 - Phase 1 (Setup): 6 tasks - Project initialization with Next.js 16, React 19, directory structure
 - Phase 2 (Foundational): 7 tasks - Configuration for Tailwind, ESLint, Prettier, TypeScript
 - Phase 3 (US1 - P1): 5 tasks - Layout, dark mode, landing page, favicon
@@ -43,6 +45,7 @@ Generated comprehensive task list for Project Setup & Infrastructure (29 tasks t
 - Phase 5 (Polish): 5 tasks - Documentation and final validation
 
 **Key Features:**
+
 - Tasks follow strict checklist format with IDs, [P] markers, [Story] labels
 - Each user story independently testable
 - Parallel opportunities identified for all configuration tasks

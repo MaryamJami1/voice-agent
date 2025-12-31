@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "create phase 4 read from phase.md file"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 <!--
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
@@ -62,7 +62,7 @@ As a user, I want the transcript component to be styled in dark mode with a futu
 
 1. **Given** the LiveTranscript component is rendered, **When** it's displayed, **Then** it uses dark mode styling consistent with the dashboard
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
@@ -78,12 +78,12 @@ As a user, I want the transcript component to be styled in dark mode with a futu
 - **FR-005**: System MUST apply dark mode styling with futuristic theme to the transcript component
 - **FR-006**: System MUST ensure the transcript component is responsive and works across different screen sizes
 
-### Key Entities *(include if feature involves data)*
+### Key Entities _(include if feature involves data)_
 
 - **TranscriptMessage**: Represents a single message in the transcript with attributes: speaker (Agent/User), timestamp, and content
 - **TranscriptList**: Collection of TranscriptMessage entities that maintains order and enables scrolling behavior
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 <!--
   ACTION REQUIRED: Define measurable success criteria.

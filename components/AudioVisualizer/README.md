@@ -5,13 +5,13 @@ The Audio Visualizer Component is a React component that provides animated visua
 ## Usage Example
 
 ```tsx
-'use client';
+'use client'
 
-import { useAgentSimulator } from '@/hooks/useAgentSimulator';
-import AudioVisualizer from '@/components/AudioVisualizer/AudioVisualizer';
+import { useAgentSimulator } from '@/hooks/useAgentSimulator'
+import AudioVisualizer from '@/components/AudioVisualizer/AudioVisualizer'
 
 export default function Dashboard() {
-  const { currentAgentState } = useAgentSimulator();
+  const { currentAgentState } = useAgentSimulator()
 
   return (
     <div className="dashboard-container p-8">
@@ -24,17 +24,17 @@ export default function Dashboard() {
         onStateChange={(newState) => console.log('State changed to:', newState)}
       />
     </div>
-  );
+  )
 }
 ```
 
 ## Props
 
-| Prop | Type | Required | Default | Description |
-|------|------|----------|---------|-------------|
-| agentState | 'idle' \| 'listening' \| 'processing' \| 'speaking' | Yes | - | Current agent state from useAgentSimulator hook |
-| className | string | No | '' | Additional CSS classes for container |
-| size | 'small' \| 'medium' \| 'large' | No | 'medium' | Visualizer display size |
-| animationType | 'wave' \| 'bars' \| 'rings' | No | 'rings' | Type of visualization animation |
-| onStateChange | function | No | undefined | Callback when visualizer responds to agent state change |
-| onAnimationComplete | function | No | undefined | Callback when animation sequence completes |
+| Prop                | Type                                                | Required | Default   | Description                                             |
+| ------------------- | --------------------------------------------------- | -------- | --------- | ------------------------------------------------------- |
+| agentState          | 'idle' \| 'listening' \| 'processing' \| 'speaking' | Yes      | -         | Current agent state from useAgentSimulator hook         |
+| className           | string                                              | No       | ''        | Additional CSS classes for container                    |
+| size                | 'small' \| 'medium' \| 'large'                      | No       | 'medium'  | Visualizer display size                                 |
+| animationType       | 'wave' \| 'bars' \| 'rings'                         | No       | 'rings'   | Type of visualization animation                         |
+| onStateChange       | function                                            | No       | undefined | Callback when visualizer responds to agent state change |
+| onAnimationComplete | function                                            | No       | undefined | Callback when animation sequence completes              |

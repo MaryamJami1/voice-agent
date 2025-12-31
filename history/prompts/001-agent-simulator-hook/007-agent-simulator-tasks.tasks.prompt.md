@@ -9,16 +9,16 @@ feature: 001-agent-simulator-hook
 branch: 001-agent-simulator-hook
 user: unknown
 command: /sp.tasks
-labels: [feature,tasks,simulation]
+labels: [feature, tasks, simulation]
 links:
   spec: specs/001-agent-simulator-hook/spec.md
   ticket: null
   adr: null
   pr: null
 files:
- - specs/001-agent-simulator-hook/tasks.md
+  - specs/001-agent-simulator-hook/tasks.md
 tests:
- - Manual testing validation (no automated tests requested)
+  - Manual testing validation (no automated tests requested)
 ---
 
 ## Prompt
@@ -32,6 +32,7 @@ Successfully generated 43 actionable implementation tasks for Agent Simulator Ho
 **Summary**: Created task list organized by 4 user stories (2 P1, 2 P2), with clear dependencies and independent testing criteria.
 
 **Task Organization**:
+
 - Phase 1 (Setup): 2 tasks - directory and TypeScript verification
 - Phase 2 (Foundational): 3 tasks - type definitions (AgentState, TranscriptMessage, UseAgentSimulatorReturn)
 - Phase 3 (US1 - P1): 11 tasks - core state simulation with mount/unmount
@@ -41,6 +42,7 @@ Successfully generated 43 actionable implementation tasks for Agent Simulator Ho
 - Phase 7 (Polish): 6 tasks - documentation, validation, memory leak testing
 
 **Key Features**:
+
 - All tasks follow strict checklist format: checkbox, ID, [P] marker, [Story] label, exact file paths
 - Parallel opportunities marked for independent tasks
 - Clear dependency graph: Setup → Foundational → US1 → US2 → US3/US4 → Polish
@@ -49,6 +51,7 @@ Successfully generated 43 actionable implementation tasks for Agent Simulator Ho
 - Full feature: All stories = complete hook with transcripts and controls
 
 **Validation**:
+
 - ✅ All tasks include exact file paths (hooks/useAgentSimulator.ts)
 - ✅ All user story tasks have [US#] labels
 - ✅ Parallel tasks marked with [P]

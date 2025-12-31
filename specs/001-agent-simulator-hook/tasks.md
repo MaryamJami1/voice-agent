@@ -24,8 +24,8 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [X] T001 Verify hooks directory exists at repository root
-- [X] T002 Verify TypeScript is properly configured for Next.js 16 project
+- [x] T001 Verify hooks directory exists at repository root
+- [x] T002 Verify TypeScript is properly configured for Next.js 16 project
 
 ---
 
@@ -35,9 +35,9 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [X] T003 [P] Define AgentState type in hooks/useAgentSimulator.ts
-- [X] T004 [P] Define TranscriptMessage interface in hooks/useAgentSimulator.ts
-- [X] T005 [P] Define UseAgentSimulatorReturn interface in hooks/useAgentSimulator.ts
+- [x] T003 [P] Define AgentState type in hooks/useAgentSimulator.ts
+- [x] T004 [P] Define TranscriptMessage interface in hooks/useAgentSimulator.ts
+- [x] T005 [P] Define UseAgentSimulatorReturn interface in hooks/useAgentSimulator.ts
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
@@ -51,17 +51,17 @@
 
 ### Implementation for User Story 1
 
-- [X] T006 [US1] Create useAgentSimulator function skeleton in hooks/useAgentSimulator.ts
-- [X] T007 [US1] Implement useState for currentAgentState with initial value 'idle' in hooks/useAgentSimulator.ts
-- [X] T008 [US1] Implement useState for isRunning with initial value false in hooks/useAgentSimulator.ts
-- [X] T009 [US1] Implement useState for activeTimer with initial value null in hooks/useAgentSimulator.ts
-- [X] T010 [US1] Implement useState for transcript array with initial empty array in hooks/useAgentSimulator.ts
-- [X] T011 [US1] Implement useState for messageCounter with initial value 0 in hooks/useAgentSimulator.ts
-- [X] T012 [US1] Create transitionToState function to handle state changes in hooks/useAgentSimulator.ts
-- [X] T013 [US1] Implement useEffect that starts simulation on mount (idle → speaking transition) in hooks/useAgentSimulator.ts
-- [X] T014 [US1] Implement cleanup function in useEffect to clear activeTimer on unmount in hooks/useAgentSimulator.ts
-- [X] T015 [US1] Set isRunning to true when simulation starts in hooks/useAgentSimulator.ts
-- [X] T016 [US1] Return UseAgentSimulatorReturn object with currentAgentState, transcript, isRunning from hook in hooks/useAgentSimulator.ts
+- [x] T006 [US1] Create useAgentSimulator function skeleton in hooks/useAgentSimulator.ts
+- [x] T007 [US1] Implement useState for currentAgentState with initial value 'idle' in hooks/useAgentSimulator.ts
+- [x] T008 [US1] Implement useState for isRunning with initial value false in hooks/useAgentSimulator.ts
+- [x] T009 [US1] Implement useState for activeTimer with initial value null in hooks/useAgentSimulator.ts
+- [x] T010 [US1] Implement useState for transcript array with initial empty array in hooks/useAgentSimulator.ts
+- [x] T011 [US1] Implement useState for messageCounter with initial value 0 in hooks/useAgentSimulator.ts
+- [x] T012 [US1] Create transitionToState function to handle state changes in hooks/useAgentSimulator.ts
+- [x] T013 [US1] Implement useEffect that starts simulation on mount (idle → speaking transition) in hooks/useAgentSimulator.ts
+- [x] T014 [US1] Implement cleanup function in useEffect to clear activeTimer on unmount in hooks/useAgentSimulator.ts
+- [x] T015 [US1] Set isRunning to true when simulation starts in hooks/useAgentSimulator.ts
+- [x] T016 [US1] Return UseAgentSimulatorReturn object with currentAgentState, transcript, isRunning from hook in hooks/useAgentSimulator.ts
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently (hook starts on mount, stops on unmount, exposes state)
 
@@ -75,13 +75,13 @@
 
 ### Implementation for User Story 2
 
-- [X] T017 [US2] Define state duration constants in hooks/useAgentSimulator.ts (SPEAKING_DURATION = 5000, LISTENING_DURATION = 1000, USER_SPEAKING_DURATION = 3000)
-- [X] T018 [US2] Implement setTimeout for speaking state with SPEAKING_DURATION in transitionToState function in hooks/useAgentSimulator.ts
-- [X] T019 [US2] Implement setTimeout for listening state with LISTENING_DURATION in transitionToState function in hooks/useAgentSimulator.ts
-- [X] T020 [US2] Implement setTimeout for user-speaking state with USER_SPEAKING_DURATION in transitionToState function in hooks/useAgentSimulator.ts
-- [X] T021 [US2] Add timer cleanup before setting new timer in transitionToState function in hooks/useAgentSimulator.ts
-- [X] T022 [US2] Implement state cycle logic: speaking → listening → processing → user-speaking → speaking in transitionToState function in hooks/useAgentSimulator.ts
-- [X] T023 [US2] Ensure processing state transitions immediately to user-speaking (0ms) in hooks/useAgentSimulator.ts
+- [x] T017 [US2] Define state duration constants in hooks/useAgentSimulator.ts (SPEAKING_DURATION = 5000, LISTENING_DURATION = 1000, USER_SPEAKING_DURATION = 3000)
+- [x] T018 [US2] Implement setTimeout for speaking state with SPEAKING_DURATION in transitionToState function in hooks/useAgentSimulator.ts
+- [x] T019 [US2] Implement setTimeout for listening state with LISTENING_DURATION in transitionToState function in hooks/useAgentSimulator.ts
+- [x] T020 [US2] Implement setTimeout for user-speaking state with USER_SPEAKING_DURATION in transitionToState function in hooks/useAgentSimulator.ts
+- [x] T021 [US2] Add timer cleanup before setting new timer in transitionToState function in hooks/useAgentSimulator.ts
+- [x] T022 [US2] Implement state cycle logic: speaking → listening → processing → user-speaking → speaking in transitionToState function in hooks/useAgentSimulator.ts
+- [x] T023 [US2] Ensure processing state transitions immediately to user-speaking (0ms) in hooks/useAgentSimulator.ts
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently (hook cycles with correct durations)
 
@@ -95,12 +95,12 @@
 
 ### Implementation for User Story 3
 
-- [X] T024 [P] [US3] Implement generateMessageContent function in hooks/useAgentSimulator.ts (returns unique placeholder text)
-- [X] T025 [US3] Implement createTranscriptMessage function in hooks/useAgentSimulator.ts (creates TranscriptMessage with id, speaker, content, timestamp)
-- [X] T026 [US3] Add message generation to transitionToState when entering speaking state (speaker='Agent') in hooks/useAgentSimulator.ts
-- [X] T027 [US3] Add message generation to transitionToState when entering user-speaking state (speaker='User') in hooks/useAgentSimulator.ts
-- [X] T028 [US3] Append new TranscriptMessage to transcript array in transitionToState function in hooks/useAgentSimulator.ts
-- [X] T029 [US3] Increment messageCounter after creating each message in hooks/useAgentSimulator.ts
+- [x] T024 [P] [US3] Implement generateMessageContent function in hooks/useAgentSimulator.ts (returns unique placeholder text)
+- [x] T025 [US3] Implement createTranscriptMessage function in hooks/useAgentSimulator.ts (creates TranscriptMessage with id, speaker, content, timestamp)
+- [x] T026 [US3] Add message generation to transitionToState when entering speaking state (speaker='Agent') in hooks/useAgentSimulator.ts
+- [x] T027 [US3] Add message generation to transitionToState when entering user-speaking state (speaker='User') in hooks/useAgentSimulator.ts
+- [x] T028 [US3] Append new TranscriptMessage to transcript array in transitionToState function in hooks/useAgentSimulator.ts
+- [x] T029 [US3] Increment messageCounter after creating each message in hooks/useAgentSimulator.ts
 
 **Checkpoint**: All user stories (1, 2, 3) should now be independently functional (hook cycles with durations and generates messages)
 
@@ -114,14 +114,14 @@
 
 ### Implementation for User Story 4
 
-- [X] T030 [US4] Implement stop function in hooks/useAgentSimulator.ts (clears activeTimer, sets isRunning to false, preserves current state)
-- [X] T031 [US4] Make stop function idempotent in hooks/useAgentSimulator.ts (safe to call multiple times)
-- [X] T032 [US4] Implement start function in hooks/useAgentSimulator.ts (resumes simulation from current state, begins from idle if stopped)
-- [X] T033 [US4] Implement interrupt function in hooks/useAgentSimulator.ts (clears activeTimer, transitions to listening state, starts listening timer)
-- [X] T034 [US4] Make interrupt function idempotent in hooks/useAgentSimulator.ts (safe to call multiple times)
-- [X] T035 [US4] Add stop method to UseAgentSimulatorReturn in hooks/useAgentSimulator.ts
-- [X] T036 [US4] Add start method to UseAgentSimulatorReturn in hooks/useAgentSimulator.ts
-- [X] T037 [US4] Add interrupt method to UseAgentSimulatorReturn in hooks/useAgentSimulator.ts
+- [x] T030 [US4] Implement stop function in hooks/useAgentSimulator.ts (clears activeTimer, sets isRunning to false, preserves current state)
+- [x] T031 [US4] Make stop function idempotent in hooks/useAgentSimulator.ts (safe to call multiple times)
+- [x] T032 [US4] Implement start function in hooks/useAgentSimulator.ts (resumes simulation from current state, begins from idle if stopped)
+- [x] T033 [US4] Implement interrupt function in hooks/useAgentSimulator.ts (clears activeTimer, transitions to listening state, starts listening timer)
+- [x] T034 [US4] Make interrupt function idempotent in hooks/useAgentSimulator.ts (safe to call multiple times)
+- [x] T035 [US4] Add stop method to UseAgentSimulatorReturn in hooks/useAgentSimulator.ts
+- [x] T036 [US4] Add start method to UseAgentSimulatorReturn in hooks/useAgentSimulator.ts
+- [x] T037 [US4] Add interrupt method to UseAgentSimulatorReturn in hooks/useAgentSimulator.ts
 
 **Checkpoint**: All user stories (1, 2, 3, 4) should now be fully functional (complete hook with all control methods)
 
@@ -131,12 +131,12 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [X] T038 Add TypeScript JSDoc comments for all exported functions in hooks/useAgentSimulator.ts
-- [X] T039 Verify hook matches contract interface in contracts/hook-interface.ts
-- [X] T040 Test hook with multiple concurrent instances in hooks/useAgentSimulator.test.tsx (manual test file)
-- [X] T041 Run development server and verify hook works with dashboard component
-- [X] T042 Validate all acceptance scenarios from spec.md are satisfied
-- [X] T043 Verify memory leak prevention: run for 10 minutes, check browser memory profiler
+- [x] T038 Add TypeScript JSDoc comments for all exported functions in hooks/useAgentSimulator.ts
+- [x] T039 Verify hook matches contract interface in contracts/hook-interface.ts
+- [x] T040 Test hook with multiple concurrent instances in hooks/useAgentSimulator.test.tsx (manual test file)
+- [x] T041 Run development server and verify hook works with dashboard component
+- [x] T042 Validate all acceptance scenarios from spec.md are satisfied
+- [x] T043 Verify memory leak prevention: run for 10 minutes, check browser memory profiler
 
 ---
 

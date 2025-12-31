@@ -38,6 +38,7 @@ Created a complete specification for the Audio Visualizer Component (Phase 3) ba
 6. A quality checklist for validation
 
 The specification covers the requirements from the phase.md file for an audio visualizer component that:
+
 - Reacts to agent states (idle, listening, processing, speaking)
 - Implements appropriate animations for each state
 - Integrates with the useAgentSimulator hook
