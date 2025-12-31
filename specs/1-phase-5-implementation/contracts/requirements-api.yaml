@@ -1,0 +1,174 @@
+openapi: 3.0.0
+info:
+  title: Phase Requirements API
+  description: API for reading and processing requirements from phase.md files
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+
+paths:
+  /requirements/read:
+    post:
+      summary: Read and parse requirements from a phase.md file
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filePath:
+                  type: string
+                  description: Path to the phase.md file
+                  example: "./specs/phase1.md"
+                validate:
+                  type: boolean
+                  description: Whether to validate the requirements format
+                  default: true
+      responses:
+        '200':
+          description: Successfully read and parsed requirements
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadRequirementsResponse'
+        '400':
+          description: Bad request - invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: File not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /requirements/validate:
+    post:
+      summary: Validate the format of requirements
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequirementsArray'
+      responses:
+        '200':
+          description: Validation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResponse'
+        '400':
+          description: Bad request - invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ReadRequirementsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the operation was successful
+        phaseContext:
+          $ref: '#/components/schemas/PhaseContext'
+        requirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhaseRequirement'
+        validationResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationResult'
+
+    PhaseContext:
+      type: object
+      properties:
+        phaseId:
+          type: string
+          description: Unique identifier for the phase
+        sourceFile:
+          type: string
+          description: Path to the phase.md file
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the phase context was created
+        requirementsCount:
+          type: number
+          description: Number of requirements found in the phase
+
+    PhaseRequirement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the requirement
+        description:
+          type: string
+          description: The requirement text/description
+        priority:
+          type: string
+          description: Priority level (P1, P2, P3, etc.)
+        status:
+          type: string
+          description: Current status of the requirement
+        phase:
+          type: string
+          description: Identifier of which phase the requirement belongs to
+        sourceFile:
+          type: string
+          description: Path to the original phase.md file
+
+    RequirementsArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/PhaseRequirement'
+
+    ValidationResult:
+      type: object
+      properties:
+        isValid:
+          type: boolean
+          description: Whether the requirement format is valid
+        errors:
+          type: array
+          items:
+            type: string
+          description: List of validation errors if any
+        warnings:
+          type: array
+          items:
+            type: string
+          description: List of warnings if any
+
+    ValidationResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationResult'
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
