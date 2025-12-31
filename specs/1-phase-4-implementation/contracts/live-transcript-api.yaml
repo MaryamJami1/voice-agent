@@ -1,0 +1,163 @@
+openapi: 3.0.0
+info:
+  title: Live Transcript API
+  description: API contracts for the Live Transcript Component in the Live AI Dashboard
+  version: 1.0.0
+
+components:
+  schemas:
+    TranscriptMessage:
+      type: object
+      required:
+        - id
+        - content
+        - speaker
+        - timestamp
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the message
+          example: "msg-12345"
+        content:
+          type: string
+          description: The text content of the message
+          example: "Hello, how can I help you today?"
+        speaker:
+          type: string
+          enum: [agent, user]
+          description: Identifies who spoke the message
+          example: "agent"
+        timestamp:
+          type: string
+          format: date-time
+          description: When the message was created
+          example: "2025-12-31T10:00:00Z"
+        status:
+          type: string
+          enum: [pending, delivered, read]
+          description: Current status of the message
+          default: "delivered"
+          example: "delivered"
+
+    TranscriptList:
+      type: object
+      required:
+        - messages
+        - lastUpdated
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptMessage'
+          description: Ordered collection of messages
+        lastUpdated:
+          type: string
+          format: date-time
+          description: Timestamp of the last message update
+          example: "2025-12-31T10:00:00Z"
+        autoScrollEnabled:
+          type: boolean
+          description: Whether auto-scroll is currently active
+          default: true
+
+    LiveTranscriptProps:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptMessage'
+          description: Array of messages to display
+          default: []
+        onScroll:
+          type: string
+          description: Callback function when user scrolls manually (function type in TypeScript)
+        className:
+          type: string
+          description: Additional CSS classes to apply
+          default: ""
+        autoScroll:
+          type: boolean
+          description: Whether to enable auto-scroll behavior
+          default: true
+
+  parameters:
+    transcriptId:
+      name: transcriptId
+      in: path
+      required: true
+      description: Unique identifier for the transcript session
+      schema:
+        type: string
+
+paths:
+  /transcripts:
+    get:
+      summary: Get all transcript sessions
+      description: Retrieve a list of all transcript sessions
+      responses:
+        '200':
+          description: List of transcript sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TranscriptList'
+
+  /transcripts/{transcriptId}:
+    get:
+      summary: Get a specific transcript
+      description: Retrieve a specific transcript by ID
+      parameters:
+        - $ref: '#/components/parameters/transcriptId'
+      responses:
+        '200':
+          description: A specific transcript
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptList'
+        '404':
+          description: Transcript not found
+
+  /transcripts/{transcriptId}/messages:
+    get:
+      summary: Get messages from a transcript
+      description: Retrieve messages from a specific transcript
+      parameters:
+        - $ref: '#/components/parameters/transcriptId'
+      responses:
+        '200':
+          description: List of messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TranscriptMessage'
+        '404':
+          description: Transcript not found
+
+    post:
+      summary: Add a message to transcript
+      description: Add a new message to an existing transcript
+      parameters:
+        - $ref: '#/components/parameters/transcriptId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TranscriptMessage'
+      responses:
+        '201':
+          description: Message added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptMessage'
+        '404':
+          description: Transcript not found
+        '400':
+          description: Invalid message format
