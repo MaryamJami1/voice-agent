@@ -1,64 +1,59 @@
-'use client';
+'use client'
 
 /**
  * Dashboard component demonstrating the useAgentSimulator hook.
  * This is a simple test component to verify the hook works correctly.
  */
 
-import { useState, useOptimistic, startTransition } from 'react';
-import { useAgentSimulator } from '@/hooks/useAgentSimulator';
-import AudioVisualizer from './AudioVisualizer/AudioVisualizer';
+import { useState, useOptimistic, startTransition } from 'react'
+import { useAgentSimulator } from '@/hooks/useAgentSimulator'
+import AudioVisualizer from './AudioVisualizer/AudioVisualizer'
 
 export default function Dashboard() {
-  const {
-    currentAgentState,
-    transcript,
-    isRunning,
-    interrupt,
-    stop,
-    start,
-  } = useAgentSimulator();
+  const { currentAgentState, transcript, isRunning, interrupt, stop, start } = useAgentSimulator()
 
   // Use optimistic state for interrupt action to provide immediate UI feedback
   const [optimisticState, setOptimisticState] = useOptimistic(
     currentAgentState,
     (currentState, newState: 'idle' | 'listening' | 'processing' | 'speaking') => newState
-  );
+  )
 
   // Function to handle interrupt with optimistic update
   const handleInterrupt = () => {
     // Wrap the optimistic state update in startTransition
     startTransition(() => {
       // Optimistically update the UI to listening state immediately
-      setOptimisticState('listening');
-    });
+      setOptimisticState('listening')
+    })
 
     // Then call the actual interrupt function
-    interrupt();
-  };
+    interrupt()
+  }
 
   return (
-    <div className="p-8 bg-gray-900 text-white min-h-screen">
+    <div className="min-h-screen bg-slate-900 text-slate-100 p-4 md:p-6 lg:p-8">
       <h1 className="text-3xl font-bold mb-6">Live AI Dashboard</h1>
 
       {/* Audio Visualizer - Central Component */}
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-6 md:mb-8">
         <AudioVisualizer
           agentState={optimisticState}
           size="large"
           animationType="rings"
-          className="mb-6"
+          className="transition-transform duration-300 hover:scale-105"
         />
       </div>
 
       {/* State Display */}
-      <div className="mb-6 p-4 bg-gray-800 rounded-lg">
+      <div className="glass-card rounded-xl p-4 md:p-6 mb-6">
         <div className="mb-2">
-          <span className="text-gray-400">Current State:</span>{' '}
-          <span className="font-bold text-cyan-400">{optimisticState}</span>
+          <span className="text-slate-400">Current State:</span>{' '}
+          <span className="font-bold text-neon-cyan text-lg md:text-xl glow-cyan">
+            {optimisticState}
+          </span>
         </div>
         <div>
-          <span className="text-gray-400">Simulation Status:</span>{' '}
+          <span className="text-slate-400">Simulation Status:</span>{' '}
           <span className={isRunning ? 'text-green-400' : 'text-red-400'}>
             {isRunning ? 'Running' : 'Stopped'}
           </span>
@@ -66,32 +61,32 @@ export default function Dashboard() {
       </div>
 
       {/* Controls */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-wrap gap-4 mb-6">
         <button
           onClick={handleInterrupt}
           disabled={!isRunning}
-          className="px-6 py-2 bg-cyan-600 hover:bg-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed rounded"
+          className="flex-1 px-6 py-3 md:px-8 md:py-4 bg-neon-cyan hover:bg-cyan-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50 active:scale-95"
         >
           Interrupt Agent
         </button>
         <button
           onClick={stop}
           disabled={!isRunning}
-          className="px-6 py-2 bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed rounded"
+          className="flex-1 px-6 py-3 md:px-8 md:py-4 bg-neon-magenta hover:bg-fuchsia-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-fuchsia-500/50 active:scale-95"
         >
           End Call
         </button>
         <button
           onClick={start}
           disabled={isRunning}
-          className="px-6 py-2 bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed rounded"
+          className="flex-1 px-6 py-3 md:px-8 md:py-4 bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-green-500/50 active:scale-95"
         >
           Start
         </button>
       </div>
 
       {/* Transcript */}
-      <div className="bg-gray-800 rounded-lg p-4 max-h-96 overflow-y-auto">
+      <div className="glass-card rounded-xl p-4 md:p-6 max-h-96 overflow-y-auto">
         <h2 className="text-xl font-bold mb-4">Transcript ({transcript.length} messages)</h2>
         {transcript.length === 0 ? (
           <p className="text-gray-400">No messages yet...</p>
@@ -118,5 +113,5 @@ export default function Dashboard() {
         )}
       </div>
     </div>
-  );
+  )
 }

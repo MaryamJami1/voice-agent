@@ -23,7 +23,7 @@ Initialize a web application development environment with required framework, st
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 - ✅ **I. React-First Architecture**: Next.js 16 + React 19 will be used with App Router
 - ✅ **II. State Management Discipline**: Will configure React hooks properly; no global state libraries needed for setup

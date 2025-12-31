@@ -1,6 +1,7 @@
 # Project Implementation Phases
 
 ## Overview
+
 This document divides the "Live AI Dashboard" project into 7 logical phases for systematic development.
 
 ---
@@ -10,6 +11,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 **Objective:** Initialize the development environment with required technologies.
 
 **Tasks:**
+
 - Initialize Next.js 16 project with App Router
 - Install React 19 (strict version)
 - Configure Tailwind CSS
@@ -17,6 +19,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 - Configure project structure (components, hooks, lib folders)
 
 **Deliverables:**
+
 - Functional Next.js 16 + React 19 project
 - Tailwind CSS configured with dark mode
 - Basic project scaffold ready for development
@@ -28,6 +31,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 **Objective:** Build the `useAgentSimulator` hook to manage real-time agent states.
 
 **Tasks:**
+
 - Create `useAgentSimulator` hook in `/hooks` directory
 - Define agent states: `idle`, `listening`, `processing`, `speaking`
 - Implement timer-based state cycling:
@@ -38,6 +42,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 - Add transcript message generation synchronized with state changes
 
 **Deliverables:**
+
 - `useAgentSimulator` hook with complete state machine
 - Auto-starting simulation on mount
 - State-driven transcript message updates
@@ -49,6 +54,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 **Objective:** Create a central visual element that reacts to agent states.
 
 **Tasks:**
+
 - Design visualizer UI (waves, bars, or glowing rings)
 - Implement state-based animations:
   - Idle: Low activity
@@ -60,6 +66,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 - Apply futuristic styling (glassmorphism, neon accents)
 
 **Deliverables:**
+
 - Animated `AudioVisualizer` component
 - State-synchronized visual behavior
 - Glassmorphism + neon design applied
@@ -71,6 +78,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 **Objective:** Build a scrolling chat-style interface for real-time messages.
 
 **Tasks:**
+
 - Create `LiveTranscript` component
 - Implement message list with scroll behavior
 - Auto-scroll to latest messages
@@ -79,6 +87,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 - Style in dark mode with futuristic theme
 
 **Deliverables:**
+
 - `LiveTranscript` component with auto-scroll
 - Real-time message display
 - Synchronized with simulation hook
@@ -90,6 +99,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 **Objective:** Add controls and integrate all components into the main dashboard.
 
 **Tasks:**
+
 - Create `ControlPanel` component with:
   - "Interrupt Agent" button
   - "End Call" button
@@ -101,6 +111,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 - Ensure state synchronization across all components
 
 **Deliverables:**
+
 - Fully integrated dashboard page
 - Functional Interrupt and End Call controls
 - All components communicating via shared hook
@@ -112,6 +123,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 **Objective:** Apply final styling touches and optimize for visual impact.
 
 **Tasks:**
+
 - Enhance glassmorphism effects (backdrop blur, translucent layers)
 - Add neon accent colors (cyan, magenta, purple)
 - Ensure consistent dark mode palette
@@ -121,6 +133,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 - Optimize performance (avoid manual memoization, rely on React Compiler)
 
 **Deliverables:**
+
 - Visually stunning, responsive dashboard
 - Professional-grade UI/UX
 - Consistent futuristic theme
@@ -132,6 +145,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
 **Objective:** Deploy the application and prepare deliverables.
 
 **Tasks:**
+
 - Push code to GitHub repository
 - Deploy to Vercel
 - Test deployed application
@@ -145,6 +159,7 @@ This document divides the "Live AI Dashboard" project into 7 logical phases for 
   - AI workflow explanation
 
 **Deliverables:**
+
 - Vercel deployment link (live)
 - GitHub repository link
 - AI workflow proof (recording or screenshots)

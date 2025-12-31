@@ -1,20 +1,20 @@
 // lib/requirements-reader/phase-context.ts
 // Phase context management functionality
 
-import { PhaseContext, PhaseRequirement } from './types';
+import { PhaseContext, PhaseRequirement } from './types'
 
 /**
  * Manages phase context information
  */
 export class PhaseContextManager {
-  private contexts: Map<string, PhaseContext> = new Map();
+  private contexts: Map<string, PhaseContext> = new Map()
 
   /**
    * Adds or updates a phase context
    * @param context - The phase context to add or update
    */
   addContext(context: PhaseContext): void {
-    this.contexts.set(context.phaseId, context);
+    this.contexts.set(context.phaseId, context)
   }
 
   /**
@@ -23,7 +23,7 @@ export class PhaseContextManager {
    * @returns The phase context or undefined if not found
    */
   getContext(phaseId: string): PhaseContext | undefined {
-    return this.contexts.get(phaseId);
+    return this.contexts.get(phaseId)
   }
 
   /**
@@ -32,7 +32,7 @@ export class PhaseContextManager {
    * @returns True if the context was removed, false if it didn't exist
    */
   removeContext(phaseId: string): boolean {
-    return this.contexts.delete(phaseId);
+    return this.contexts.delete(phaseId)
   }
 
   /**
@@ -40,7 +40,7 @@ export class PhaseContextManager {
    * @returns Array of all phase contexts
    */
   getAllContexts(): PhaseContext[] {
-    return Array.from(this.contexts.values());
+    return Array.from(this.contexts.values())
   }
 
   /**
@@ -49,10 +49,10 @@ export class PhaseContextManager {
    * @param count - The new requirements count
    */
   updateRequirementsCount(phaseId: string, count: number): void {
-    const context = this.getContext(phaseId);
+    const context = this.getContext(phaseId)
     if (context) {
-      context.requirementsCount = count;
-      this.addContext(context); // Update the stored context
+      context.requirementsCount = count
+      this.addContext(context) // Update the stored context
     }
   }
 
@@ -62,14 +62,14 @@ export class PhaseContextManager {
    * @returns True if the phase context exists, false otherwise
    */
   hasContext(phaseId: string): boolean {
-    return this.contexts.has(phaseId);
+    return this.contexts.has(phaseId)
   }
 
   /**
    * Clears all phase contexts
    */
   clear(): void {
-    this.contexts.clear();
+    this.contexts.clear()
   }
 
   /**
@@ -77,7 +77,7 @@ export class PhaseContextManager {
    * @returns Number of phase contexts being managed
    */
   size(): number {
-    return this.contexts.size;
+    return this.contexts.size
   }
 }
 
@@ -88,13 +88,17 @@ export class PhaseContextManager {
  * @param requirements - Optional array of requirements to determine count
  * @returns A new PhaseContext object
  */
-export function createPhaseContext(phaseId: string, sourceFile: string, requirements?: PhaseRequirement[]): PhaseContext {
+export function createPhaseContext(
+  phaseId: string,
+  sourceFile: string,
+  requirements?: PhaseRequirement[]
+): PhaseContext {
   return {
     phaseId,
     sourceFile,
     createdAt: new Date(),
-    requirementsCount: requirements ? requirements.length : 0
-  };
+    requirementsCount: requirements ? requirements.length : 0,
+  }
 }
 
 /**
@@ -103,10 +107,13 @@ export function createPhaseContext(phaseId: string, sourceFile: string, requirem
  * @param updates - The updates to apply to the context
  * @returns Updated PhaseContext object
  */
-export function updatePhaseContext(existingContext: PhaseContext, updates: Partial<PhaseContext>): PhaseContext {
+export function updatePhaseContext(
+  existingContext: PhaseContext,
+  updates: Partial<PhaseContext>
+): PhaseContext {
   return {
     ...existingContext,
     ...updates,
-    createdAt: updates.createdAt || existingContext.createdAt
-  };
+    createdAt: updates.createdAt || existingContext.createdAt,
+  }
 }

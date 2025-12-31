@@ -24,42 +24,42 @@ npm install # The library is part of the project
 ### Basic Usage
 
 ```typescript
-import { readRequirements } from 'lib/requirements-reader';
+import { readRequirements } from 'lib/requirements-reader'
 
 // Read requirements from a phase.md file
-const requirements = await readRequirements('./path/to/phase.md');
-console.log(`Found ${requirements.phaseContext.requirementsCount} requirements`);
-console.log('Requirements:', requirements.requirements);
+const requirements = await readRequirements('./path/to/phase.md')
+console.log(`Found ${requirements.phaseContext.requirementsCount} requirements`)
+console.log('Requirements:', requirements.requirements)
 ```
 
 ### Reading Multiple Files
 
 ```typescript
-import { readRequirementsFromMultipleFiles } from 'lib/requirements-reader';
+import { readRequirementsFromMultipleFiles } from 'lib/requirements-reader'
 
 // Read requirements from multiple phase files
-const filePaths = ['./phase1.md', './phase2.md', './phase3.md'];
-const allRequirements = await readRequirementsFromMultipleFiles(filePaths);
+const filePaths = ['./phase1.md', './phase2.md', './phase3.md']
+const allRequirements = await readRequirementsFromMultipleFiles(filePaths)
 
-allRequirements.forEach(result => {
-  console.log(`Phase ${result.phaseContext.phaseId}: ${result.requirements.length} requirements`);
-});
+allRequirements.forEach((result) => {
+  console.log(`Phase ${result.phaseContext.phaseId}: ${result.requirements.length} requirements`)
+})
 ```
 
 ### Advanced Usage with Multi-File Processor
 
 ```typescript
-import { MultiFileProcessor } from 'lib/requirements-reader';
+import { MultiFileProcessor } from 'lib/requirements-reader'
 
-const processor = new MultiFileProcessor();
+const processor = new MultiFileProcessor()
 
 // Process multiple files
-const results = await processor.processMultipleFiles(['./phase1.md', './phase2.md']);
+const results = await processor.processMultipleFiles(['./phase1.md', './phase2.md'])
 
 // Get combined results
-const combined = combinePhaseRequirements(results);
-console.log(`Total requirements: ${combined.allRequirements.length}`);
-console.log(`Validation errors: ${combined.validationSummary.errors.length}`);
+const combined = combinePhaseRequirements(results)
+console.log(`Total requirements: ${combined.allRequirements.length}`)
+console.log(`Validation errors: ${combined.validationSummary.errors.length}`)
 ```
 
 ## API Reference
@@ -71,9 +71,11 @@ console.log(`Validation errors: ${combined.validationSummary.errors.length}`);
 Reads and parses requirements from a single phase.md file.
 
 **Parameters:**
+
 - `filePath` (string): Path to the phase.md file
 
 **Returns:**
+
 - `Promise<PhaseRequirements>`: Object containing requirements and context
 
 #### `readRequirementsFromMultipleFiles(filePaths: string[])`
@@ -81,9 +83,11 @@ Reads and parses requirements from a single phase.md file.
 Reads and parses requirements from multiple phase.md files.
 
 **Parameters:**
+
 - `filePaths` (string[]): Array of paths to phase.md files
 
 **Returns:**
+
 - `Promise<PhaseRequirements[]>`: Array of objects containing requirements and context
 
 #### `processMultiplePhaseFiles(filePaths: string[])`
@@ -91,9 +95,11 @@ Reads and parses requirements from multiple phase.md files.
 Processes multiple phase.md files using the MultiFileProcessor class.
 
 **Parameters:**
+
 - `filePaths` (string[]): Array of paths to phase.md files
 
 **Returns:**
+
 - `Promise<PhaseRequirements[]>`: Array of objects containing requirements and context
 
 ### Classes
@@ -112,12 +118,12 @@ Manages phase context information across multiple files.
 
 ```typescript
 {
-  id: string;           // Requirement ID (e.g., "FR-001")
-  description: string;  // Requirement description
-  priority: string;     // Priority level (P1, P2, P3, etc.)
-  status: string;       // Requirement status
-  phase: string;        // Phase identifier
-  sourceFile: string;   // Source file path
+  id: string // Requirement ID (e.g., "FR-001")
+  description: string // Requirement description
+  priority: string // Priority level (P1, P2, P3, etc.)
+  status: string // Requirement status
+  phase: string // Phase identifier
+  sourceFile: string // Source file path
 }
 ```
 
@@ -125,10 +131,10 @@ Manages phase context information across multiple files.
 
 ```typescript
 {
-  phaseId: string;      // Unique phase identifier
-  sourceFile: string;   // Source file path
-  createdAt: Date;      // Creation timestamp
-  requirementsCount: number; // Number of requirements found
+  phaseId: string // Unique phase identifier
+  sourceFile: string // Source file path
+  createdAt: Date // Creation timestamp
+  requirementsCount: number // Number of requirements found
 }
 ```
 

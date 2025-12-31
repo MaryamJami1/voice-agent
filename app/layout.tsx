@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Live AI Dashboard",
-  description: "Voice AI agent session monitoring dashboard",
-};
+  title: 'Live AI Dashboard',
+  description: 'Voice AI agent session monitoring dashboard',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" className="dark">
@@ -17,5 +17,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  );
+  )
 }

@@ -5,7 +5,7 @@
 **Status**: Draft
 **Input**: User description: "create phase 5 read requirements in phase.md file"
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - Implement Requirements Reading Functionality (Priority: P1)
 
@@ -58,7 +58,7 @@ The system should be able to handle different phases by reading from their respe
 - What if the phase.md file has special characters or encoding issues?
 - How does the system behave when the phase.md file is being modified during reading?
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -75,7 +75,7 @@ The system should be able to handle different phases by reading from their respe
 - **Phase Requirements**: The structured representation of requirements extracted from phase.md files, containing requirement ID, description, priority, and status
 - **Phase Context**: Information that identifies which phase the requirements belong to and any phase-specific metadata
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 

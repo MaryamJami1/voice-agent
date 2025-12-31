@@ -9,20 +9,20 @@ feature: 001-agent-simulator-hook
 branch: 001-agent-simulator-hook
 user: unknown
 command: /sp.plan
-labels: [feature,plan,simulation]
+labels: [feature, plan, simulation]
 links:
   spec: specs/001-agent-simulator-hook/spec.md
   ticket: null
   adr: null
   pr: null
 files:
- - specs/001-agent-simulator-hook/plan.md
- - specs/001-agent-simulator-hook/research.md
- - specs/001-agent-simulator-hook/data-model.md
- - specs/001-agent-simulator-hook/quickstart.md
- - specs/001-agent-simulator-hook/contracts/hook-interface.ts
+  - specs/001-agent-simulator-hook/plan.md
+  - specs/001-agent-simulator-hook/research.md
+  - specs/001-agent-simulator-hook/data-model.md
+  - specs/001-agent-simulator-hook/quickstart.md
+  - specs/001-agent-simulator-hook/contracts/hook-interface.ts
 tests:
- - Constitution check validation (pre-design and post-design)
+  - Constitution check validation (pre-design and post-design)
 ---
 
 ## Prompt
@@ -36,6 +36,7 @@ Successfully created implementation plan for Agent Simulator Hook feature.
 **Summary**: Completed Phase 0 (research) and Phase 1 (design & contracts) for the useAgentSimulator hook. All constitution principles verified, no violations detected.
 
 **Key Deliverables**:
+
 - Plan File: `specs/001-agent-simulator-hook/plan.md`
 - Research: All decisions pre-determined by constitution/spec, no external research needed
 - Data Model: Three entities (AgentState, TranscriptMessage, SimulationState) with state transition machine
@@ -44,6 +45,7 @@ Successfully created implementation plan for Agent Simulator Hook feature.
 - Agent Context: Updated CLAUDE.md with TypeScript, React 19, Next.js 16 details
 
 **Design Decisions**:
+
 - React hooks (useState, useEffect) for state management (Constitution Principle II)
 - TypeScript for type safety (Constitution constraints)
 - No memoization libraries (Constitution Principle III - React Compiler)

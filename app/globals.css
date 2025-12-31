@@ -21,11 +21,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
 
@@ -35,5 +31,51 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism utilities */
+  .glass-card {
+    @apply bg-slate-900/80 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+
+  .glass-card-strong {
+    @apply bg-slate-900/90 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+
+  /* Neon glow effects */
+  .glow-cyan {
+    @apply shadow-cyan-500/50;
+  }
+
+  .glow-magenta {
+    @apply shadow-fuchsia-500/50;
+  }
+
+  .glow-purple {
+    @apply shadow-purple-500/50;
+  }
+
+  /* Smooth transitions for interactive elements */
+  .transition-smooth {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .animate-pulse,
+    .animate-spin,
+    .animate-bounce {
+      animation: none;
+    }
   }
 }

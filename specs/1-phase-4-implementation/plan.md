@@ -12,6 +12,7 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
 **Current State**: The project uses Next.js 16 with React 19, Tailwind CSS for styling with dark mode as default, and follows a simulation-driven development approach where the `useAgentSimulator` hook is the single source of truth for agent states.
 
 **Key Technologies**:
+
 - Next.js 16 with App Router
 - React 19 (strict version)
 - TypeScript
@@ -19,11 +20,13 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
 - Custom `useAgentSimulator` hook
 
 **Integration Points**:
+
 - The component must consume the `useAgentSimulator` hook to get transcript data
 - Auto-scroll functionality needs to work with the message update cycle
 - Component must follow the futuristic design system (dark mode, glassmorphism, neon accents)
 
 **Constraints**:
+
 - Must follow React-First Architecture principle
 - No manual memoization (use React Compiler only)
 - Direct props for refs (no forwardRef)
@@ -31,14 +34,14 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
 
 ## Constitution Check
 
-| Principle | Status | Notes |
-|-----------|--------|-------|
-| React-First Architecture | ✓ | Component will follow React 19 best practices with Next.js 16 |
-| State Management Discipline | ✓ | Will consume state from useAgentSimulator hook, no additional state management |
-| Compiler-Optimized Performance | ✓ | No manual memoization, rely on React Compiler |
-| Simulation-Driven Development | ✓ | Must integrate with useAgentSimulator hook as single source of truth |
-| Component Co-location | ✓ | Component will be placed in /components directory |
-| Visual Consistency | ✓ | Will follow dark mode and futuristic design system |
+| Principle                      | Status | Notes                                                                          |
+| ------------------------------ | ------ | ------------------------------------------------------------------------------ |
+| React-First Architecture       | ✓      | Component will follow React 19 best practices with Next.js 16                  |
+| State Management Discipline    | ✓      | Will consume state from useAgentSimulator hook, no additional state management |
+| Compiler-Optimized Performance | ✓      | No manual memoization, rely on React Compiler                                  |
+| Simulation-Driven Development  | ✓      | Must integrate with useAgentSimulator hook as single source of truth           |
+| Component Co-location          | ✓      | Component will be placed in /components directory                              |
+| Visual Consistency             | ✓      | Will follow dark mode and futuristic design system                             |
 
 ## Gates
 
@@ -73,6 +76,7 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
    - **Research**: Best practices for auto-scroll that respects user interaction
 
 ### Expected Outcomes
+
 - Understanding of the transcript message structure from useAgentSimulator
 - Best practices for auto-scrolling in React chat interfaces
 - Tailwind CSS classes for futuristic dark mode styling
@@ -83,6 +87,7 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
 ### Data Model: data-model.md
 
 **TranscriptMessage Entity**
+
 - `id`: string - Unique identifier for the message
 - `content`: string - The text content of the message
 - `speaker`: 'agent' | 'user' - Identifies who spoke the message
@@ -90,6 +95,7 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
 - `status`: 'pending' | 'delivered' | 'read' - Current status of the message
 
 **TranscriptList Entity**
+
 - `messages`: TranscriptMessage[] - Ordered collection of messages
 - `lastUpdated`: Date - Timestamp of the last message update
 - `autoScrollEnabled`: boolean - Whether auto-scroll is currently active
@@ -97,12 +103,14 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
 ### Component Contract
 
 **LiveTranscript Component Interface**
+
 - Props:
   - `messages`: TranscriptMessage[] - Array of messages to display
   - `onScroll`: () => void - Callback when user scrolls manually
   - `className`: string - Additional CSS classes to apply
 
 **Behavior Contract**
+
 - Auto-scrolls to the bottom when new messages are added
 - Disables auto-scroll when user scrolls away from bottom
 - Re-enables auto-scroll when user scrolls back to bottom
@@ -112,12 +120,14 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
 ### UI/UX Design Considerations
 
 **Visual Design**
+
 - Dark background with glassmorphism effect for message bubbles
 - Neon accent colors (cyan for agent, magenta for user) for speaker differentiation
 - Timestamps in a subtle, secondary color
 - Smooth animations for new message appearance
 
 **Interaction Design**
+
 - Auto-scroll behavior that respects user scrolling
 - Visual indicators when new messages arrive while scrolled up
 - Clear visual distinction between agent and user messages
@@ -165,11 +175,13 @@ The Live Transcript Component is part of the Live AI Dashboard project, specific
 ## Phase 3: Integration & Validation
 
 ### Integration Points
+
 - Connect with useAgentSimulator hook for real-time messages
 - Ensure synchronization with AudioVisualizer component
 - Integrate with ControlPanel for potential interaction
 
 ### Validation Criteria
+
 - All acceptance scenarios from spec are met
 - Component follows all constitution principles
 - Performance is acceptable with React Compiler optimization

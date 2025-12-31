@@ -14,16 +14,18 @@ The `useAgentSimulator` hook manages three primary data structures: Agent State,
 Represents the current mode of the agent.
 
 ```typescript
-type AgentState = 'idle' | 'listening' | 'processing' | 'speaking';
+type AgentState = 'idle' | 'listening' | 'processing' | 'speaking'
 ```
 
 **Properties**:
+
 - **idle**: Initial state before simulation starts
 - **listening**: Agent is silently listening (1 second duration)
 - **processing**: Agent is thinking (instant transition state)
 - **speaking**: Agent is speaking (5 seconds) or user is speaking (3 seconds)
 
 **Constraints**:
+
 - Only one state can be active at any given time
 - State transitions follow a defined cycle
 - State can be interrupted at any point (forced to listening)
@@ -34,29 +36,31 @@ Represents a single line of conversation.
 
 ```typescript
 interface TranscriptMessage {
-  id: string;           // Unique identifier
-  speaker: 'Agent' | 'User';  // Who is speaking
-  content: string;       // Message text (placeholder)
-  timestamp: Date;       // When the message was generated
+  id: string // Unique identifier
+  speaker: 'Agent' | 'User' // Who is speaking
+  content: string // Message text (placeholder)
+  timestamp: Date // When the message was generated
 }
 ```
 
 **Properties**:
 
-| Field | Type | Description | Validation |
-|-------|------|-------------|-------------|
-| id | string | Unique identifier | Non-empty string, uniqueness guaranteed |
-| speaker | 'Agent' \| 'User' | Speaker label | Must be exactly 'Agent' or 'User' |
-| content | string | Message text | Non-empty string |
-| timestamp | Date | Generation time | Valid Date object |
+| Field     | Type              | Description       | Validation                              |
+| --------- | ----------------- | ----------------- | --------------------------------------- |
+| id        | string            | Unique identifier | Non-empty string, uniqueness guaranteed |
+| speaker   | 'Agent' \| 'User' | Speaker label     | Must be exactly 'Agent' or 'User'       |
+| content   | string            | Message text      | Non-empty string                        |
+| timestamp | Date              | Generation time   | Valid Date object                       |
 
 **Generation Rules**:
+
 - Message created when entering 'speaking' state with speaker='Agent'
 - Message created when entering 'speaking' state with speaker='User' (user-speaking)
 - Messages are append-only (never deleted)
 - Messages are ordered chronologically (newest last)
 
 **Default Content**:
+
 - Agent messages: Generic placeholder text
 - User messages: Generic placeholder text
 - Content uniqueness: Use counter or timestamp to ensure variation
@@ -67,25 +71,26 @@ Represents the runtime control state (not exposed to consumers).
 
 ```typescript
 interface SimulationState {
-  isRunning: boolean;      // Whether simulation is active
-  currentAgentState: AgentState;  // Current agent state
-  transcript: TranscriptMessage[];  // All messages
-  activeTimer: number | null;  // Current setTimeout ID (internal)
-  messageCounter: number;   // For generating unique message IDs
+  isRunning: boolean // Whether simulation is active
+  currentAgentState: AgentState // Current agent state
+  transcript: TranscriptMessage[] // All messages
+  activeTimer: number | null // Current setTimeout ID (internal)
+  messageCounter: number // For generating unique message IDs
 }
 ```
 
 **Properties**:
 
-| Field | Type | Visibility | Description |
-|-------|------|-------------|-------------|
-| isRunning | boolean | Exposed | Whether simulation is cycling |
-| currentAgentState | AgentState | Exposed | Current agent state |
-| transcript | TranscriptMessage[] | Exposed | Array of all messages |
-| activeTimer | number \| null | Internal | Current timer ID for cleanup |
-| messageCounter | number | Internal | Counter for unique message IDs |
+| Field             | Type                | Visibility | Description                    |
+| ----------------- | ------------------- | ---------- | ------------------------------ |
+| isRunning         | boolean             | Exposed    | Whether simulation is cycling  |
+| currentAgentState | AgentState          | Exposed    | Current agent state            |
+| transcript        | TranscriptMessage[] | Exposed    | Array of all messages          |
+| activeTimer       | number \| null      | Internal   | Current timer ID for cleanup   |
+| messageCounter    | number              | Internal   | Counter for unique message IDs |
 
 **Lifecycle**:
+
 - Initialization: isRunning=false, currentAgentState='idle', transcript=[], activeTimer=null, messageCounter=0
 - Start: isRunning=true, begin state cycle from idle→speaking
 - Stop: isRunning=false, clear activeTimer, preserve transcript
@@ -111,19 +116,20 @@ speaking (repeat cycle)
 
 ### State Transitions Table
 
-| Current State | Trigger | Next State | Duration | Message Generated? |
-|---------------|---------|-------------|----------|-------------------|
-| idle | start() | speaking | 5000ms | Yes (Agent) |
-| speaking | timer expire | listening | 1000ms | No |
-| listening | timer expire | processing | 0ms | No |
-| processing | immediate | user-speaking | 3000ms | Yes (User) |
-| user-speaking | timer expire | speaking | 5000ms | Yes (Agent) |
-| any state | interrupt() | listening | 1000ms | No |
-| any state | stop() | [current state frozen] | ∞ | No |
+| Current State | Trigger      | Next State             | Duration | Message Generated? |
+| ------------- | ------------ | ---------------------- | -------- | ------------------ |
+| idle          | start()      | speaking               | 5000ms   | Yes (Agent)        |
+| speaking      | timer expire | listening              | 1000ms   | No                 |
+| listening     | timer expire | processing             | 0ms      | No                 |
+| processing    | immediate    | user-speaking          | 3000ms   | Yes (User)         |
+| user-speaking | timer expire | speaking               | 5000ms   | Yes (Agent)        |
+| any state     | interrupt()  | listening              | 1000ms   | No                 |
+| any state     | stop()       | [current state frozen] | ∞        | No                 |
 
 ### Interrupt Behavior
 
 The `interrupt()` action:
+
 1. Clears current activeTimer
 2. Sets currentAgentState to 'listening'
 3. Starts new timer for 1000ms (listening duration)
@@ -133,6 +139,7 @@ The `interrupt()` action:
 ### Stop Behavior
 
 The `stop()` action:
+
 1. Clears current activeTimer
 2. Sets isRunning to false
 3. Leaves currentAgentState unchanged (frozen)
@@ -141,12 +148,12 @@ The `stop()` action:
 
 ## Timer Configuration
 
-| State | Duration (ms) | Timer Type | Cleanup Method |
-|-------|-----------------|-------------|-----------------|
-| speaking | 5000 | setTimeout | clearTimeout(timerId) |
-| listening | 1000 | setTimeout | clearTimeout(timerId) |
-| user-speaking | 3000 | setTimeout | clearTimeout(timerId) |
-| processing | 0 | N/A (immediate) | N/A |
+| State         | Duration (ms) | Timer Type      | Cleanup Method        |
+| ------------- | ------------- | --------------- | --------------------- |
+| speaking      | 5000          | setTimeout      | clearTimeout(timerId) |
+| listening     | 1000          | setTimeout      | clearTimeout(timerId) |
+| user-speaking | 3000          | setTimeout      | clearTimeout(timerId) |
+| processing    | 0             | N/A (immediate) | N/A                   |
 
 ## Relationships
 

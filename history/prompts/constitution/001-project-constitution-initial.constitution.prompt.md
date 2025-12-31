@@ -9,7 +9,7 @@ feature: none
 branch: master
 user: User
 command: /sp.constitution
-labels: ["constitution", "governance", "initial-creation"]
+labels: ['constitution', 'governance', 'initial-creation']
 links:
   spec: null
   ticket: null
@@ -31,6 +31,7 @@ tests:
 Created the project constitution for "Live AI Dashboard" project with the following structure:
 
 **Core Principles (6):**
+
 1. React-First Architecture - React 19 + Next.js 16 App Router conventions
 2. State Management Discipline - useOptimistic, useState, no global state libraries
 3. Compiler-Optimized Performance - No useMemo, useCallback, React.memo (rely on React Compiler)
@@ -39,18 +40,21 @@ Created the project constitution for "Live AI Dashboard" project with the follow
 6. Visual Consistency - Dark mode, glassmorphism, neon accents, Tailwind CSS
 
 **Technical Constraints:**
+
 - Framework requirements (Next.js 16, React 19, Tailwind CSS)
 - Code quality (TypeScript, ESLint/Prettier, no manual memoization)
 - Simulation requirements (useAgentSimulator hook, state cycles, synchronization)
 - Control behavior (Interrupt with useOptimistic, End Call with final state)
 
 **Development Workflow:**
+
 - Component development steps
 - State management guidelines
 - Manual testing approach
 - AI usage integration requirements
 
 **Governance:**
+
 - Amendment procedure with semantic versioning
 - Compliance review process
 - Versioning policy

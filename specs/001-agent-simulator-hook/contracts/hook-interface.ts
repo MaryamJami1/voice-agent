@@ -8,23 +8,23 @@
 /**
  * Represents the current mode of the agent.
  */
-export type AgentState = 'idle' | 'listening' | 'processing' | 'speaking';
+export type AgentState = 'idle' | 'listening' | 'processing' | 'speaking'
 
 /**
  * Represents a single line of conversation.
  */
 export interface TranscriptMessage {
   /** Unique identifier for the message */
-  id: string;
+  id: string
 
   /** Who is speaking - either 'Agent' or 'User' */
-  speaker: 'Agent' | 'User';
+  speaker: 'Agent' | 'User'
 
   /** Message content (placeholder text) */
-  content: string;
+  content: string
 
   /** Timestamp when the message was generated */
-  timestamp: Date;
+  timestamp: Date
 }
 
 /**
@@ -36,19 +36,19 @@ export interface UseAgentSimulatorReturn {
    * Current agent state (read-only).
    * Cycles through: idle → speaking → listening → processing → user-speaking → speaking...
    */
-  currentAgentState: AgentState;
+  currentAgentState: AgentState
 
   /**
    * Array of all transcript messages (read-only, append-only).
    * Messages are added when entering speaking states.
    */
-  transcript: TranscriptMessage[];
+  transcript: TranscriptMessage[]
 
   /**
    * Whether the simulation is currently running (read-only).
    * true = state cycle is active, false = simulation is frozen/stopped.
    */
-  isRunning: boolean;
+  isRunning: boolean
 
   /**
    * Interrupt the agent - forces immediate transition to listening state.
@@ -62,7 +62,7 @@ export interface UseAgentSimulatorReturn {
    *
    * Idempotent: Safe to call multiple times.
    */
-  interrupt: () => void;
+  interrupt: () => void
 
   /**
    * Stop the simulation - halts all state transitions.
@@ -75,7 +75,7 @@ export interface UseAgentSimulatorReturn {
    *
    * Idempotent: Safe to call multiple times.
    */
-  stop: () => void;
+  stop: () => void
 
   /**
    * Start or restart the simulation.
@@ -85,14 +85,14 @@ export interface UseAgentSimulatorReturn {
    * - If idle: Starts simulation from idle → speaking
    * - If already running: No effect (idempotent)
    */
-  start: () => void;
+  start: () => void
 }
 
 /**
  * Hook signature.
  * Accepts no parameters, returns UseAgentSimulatorReturn.
  */
-export declare function useAgentSimulator(): UseAgentSimulatorReturn;
+export declare function useAgentSimulator(): UseAgentSimulatorReturn
 
 /**
  * Contract Guarantees:

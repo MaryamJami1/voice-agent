@@ -4,7 +4,7 @@ A visually stunning, responsive dashboard that monitors a simulated Voice AI age
 
 ## Project Overview
 
-This project is a frontend intern challenge that demonstrates complex UI development, real-time state simulation, and effective use of AI coding agents.
+This project is a frontend challenge that demonstrates complex UI development, real-time state simulation, and effective use of AI coding agents.
 
 ## Tech Stack
 
@@ -25,11 +25,13 @@ This project is a frontend intern challenge that demonstrates complex UI develop
 
 1. Clone the repository
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
    ```
@@ -58,11 +60,11 @@ public/            # Static assets
 ## Development Phases
 
 1. ✅ **Phase 1**: Project Setup & Infrastructure
-2. ⏳ **Phase 2**: Core Simulation Hook
-3. ⏳ **Phase 3**: Audio Visualizer Component
-4. ⏳ **Phase 4**: Live Transcript Component
-5. ⏳ **Phase 5**: Control Panel & Integration
-6. ⏳ **Phase 6**: Styling & Polish
+2. ✅**Phase 2**: Core Simulation Hook
+3. ✅**Phase 3**: Audio Visualizer Component
+4. ✅**Phase 4**: Live Transcript Component
+5. ✅**Phase 5**: Control Panel & Integration
+6. ✅**Phase 6**: Styling & Polish
 7. ⏳ **Phase 7**: Deployment & Documentation
 
 ## Features

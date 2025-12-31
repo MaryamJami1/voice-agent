@@ -3,12 +3,14 @@
 ## Component Entity: AudioVisualizer
 
 ### Properties
+
 - **agentState** (string): Current state of the agent ('idle', 'listening', 'processing', 'speaking')
 - **intensity** (number): Animation intensity level based on agent state (0.0 to 1.0)
 - **animationStyle** (string): Current animation pattern ('wave', 'bars', 'rings', 'pulse')
 - **ref** (React.Ref): Direct ref prop for component access (no forwardRef used)
 
 ### State Transitions
+
 - **idle** → **listening**: Triggered when agent starts listening to user input
   - Animation intensity increases from low to medium
   - Animation pattern shifts to reactive behavior
@@ -25,6 +27,7 @@
 ## Visual State Mapping
 
 ### Agent State to Visual Properties
+
 - **idle**:
   - Intensity: 0.1-0.3
   - Animation: Subtle pulsing
@@ -52,11 +55,13 @@
 ## Component Interface
 
 ### Props
+
 - **agentState** (required): Current state from useAgentSimulator hook
 - **className** (optional): Additional CSS classes for styling
 - **size** (optional): Visualizer size ('small', 'medium', 'large') - default: 'medium'
 - **animationType** (optional): Type of visualization ('wave', 'bars', 'rings') - default: 'rings'
 
 ### Events
+
 - **onStateChange**: Triggered when visualizer responds to agent state change
 - **onAnimationComplete**: Triggered when animation sequence completes
